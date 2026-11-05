@@ -1,0 +1,11 @@
+**1. A logged-in page used by many tests — Fixture**
+
+Use a fixture because it can provide a reusable, authenticated page to multiple tests without repeating the login process in every test.
+
+**2. A counter reset before each test — beforeEach**
+
+Use `beforeEach` because it runs before every test, ensuring the counter is reset to a clean state and tests remain independent.
+
+**3. A function that formats a date — Helper Function**
+
+Use a helper function because date formatting is a reusable utility that can be called whenever needed without requiring test setup or browser fixtures.
