@@ -23,3 +23,4 @@ test('exports the course list as a non-empty CSV file', async ({ page }) => {
   const stats = await fs.stat(filePath);
   expect(stats.size).toBeGreaterThan(0);
 });
+The `page.waitForEvent('download')` listener must be registered before clicking the Export button because the download event can fire immediately after the click. If the listener is registered after the click, Playwright may miss the download event, causing the test to fail or time out. By setting up the listener first and then clicking Export, we ensure the download is captured reliably.
