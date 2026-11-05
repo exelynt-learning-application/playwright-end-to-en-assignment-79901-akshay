@@ -1,0 +1,25 @@
+**Error Description:**
+
+A strict mode violation occurs when Playwright finds more than one element matching the locator `page.getByRole('button', { name: 'Delete' })`. Since two buttons have the same accessible name, Playwright cannot identify which button to click, so the test fails.
+
+**Fix 1: Use first() or last()**
+
+If we want to click the first matching Delete button, we can use:
+
+```javascript
+await page.getByRole('button', { name: 'Delete' }).first().click();
+```
+
+Alternatively, use `.last()` to click the last matching button.
+
+**Fix 2: Use nth()**
+
+We can select a specific matching element by its index:
+
+```javascript
+await page.getByRole('button', { name: 'Delete' }).nth(1).click();
+```
+
+This clicks the second Delete button because indexing starts from zero.
+
+**Conclusion:** Both approaches resolve the strict mode violation without changing the webpage. However, we should choose the correct element carefully to ensure the test performs the intended action.
