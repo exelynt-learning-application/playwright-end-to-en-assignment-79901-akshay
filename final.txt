@@ -1,0 +1,36 @@
+**1. Where do E2E tests sit in the testing pyramid, and what should they not cover?**
+
+E2E tests sit at the top of the testing pyramid and verify complete user workflows from start to finish. They should focus on critical business flows rather than testing every small function or edge case, which is better covered by unit and integration tests. For example, test the complete student registration and course purchase process.
+
+**2. Why does each Playwright test run in its own browser context?**
+
+Each test gets an isolated browser context to prevent cookies, sessions, local storage, and other data from affecting other tests. This makes tests independent and reliable. For example, one test can log in as an admin while another logs in as a student without sharing sessions.
+
+**3. What does baseURL do?**
+
+`baseURL` defines the common starting URL of the application, so we do not need to repeat the full URL in every test. For example, if `baseURL` is `https://staging.example.com`, we can use `page.goto('/login')` to open the login page.
+
+**4. What is the difference between Playwright Test Runner and Playwright Library?**
+
+The Playwright Test Runner provides features such as test execution, assertions, parallel testing, and reporting. The Playwright Library provides browser automation APIs for controlling browsers directly. The runner is ideal for automated test suites, while the library is suitable for simple browser automation scripts.
+
+**5. How can we run the same suite against dev and staging using an environment variable?**
+
+We can use an environment variable to select the application URL without changing the test code. For example:
+
+```javascript
+// playwright.config.js
+use: {
+  baseURL: process.env.BASE_URL || 'http://localhost:3000'
+}
+```
+
+Run against different environments:
+
+```bash
+BASE_URL=https://dev.example.com npx playwright test
+
+BASE_URL=https://staging.example.com npx playwright test
+```
+
+This allows the same test suite to run against both environments.
