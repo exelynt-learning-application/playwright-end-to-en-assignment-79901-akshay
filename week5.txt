@@ -1,0 +1,17 @@
+**1. What Is Strict Mode?**
+
+Strict mode in Playwright ensures that a locator identifies exactly one element when performing actions such as clicking or filling. If a locator matches two elements, Playwright throws a **Strict Mode Violation** error because it cannot determine which element to interact with.
+
+**2. Why Is `expect(await locator.textContent()).toBe('Saved')` Discouraged?**
+
+This approach reads the text only once and performs an immediate comparison. It does not automatically retry if the expected text has not appeared yet, which can cause flaky test failures.
+
+**3. Rewrite Using a Web-First Assertion:**
+
+```javascript
+await expect(locator).toHaveText('Saved');
+```
+
+**Explanation:**
+
+`toHaveText()` automatically retries the assertion until the expected text appears or the timeout is reached. This makes tests more reliable and reduces timing-related failures.
