@@ -1,0 +1,17 @@
+`getByRole` and `getByText` are Playwright locators used to find elements on a webpage. `getByRole` locates elements based on their accessibility role and accessible name, making tests more reliable and user-focused. `getByText` locates elements using their visible text.
+
+**Example where getByText matches too many elements:**
+
+If a page contains multiple buttons, links, or sections with the text "Login", `getByText('Login')` may match multiple elements and cause a strict mode error.
+
+**How to fix it:**
+
+Use `getByRole` with a specific role and accessible name:
+
+```javascript
+await page.getByRole('button', { name: 'Login' }).click();
+```
+
+If multiple matching buttons still exist, narrow the locator using a parent locator or `.filter()`.
+
+**Conclusion:** Prefer `getByRole` because it improves accessibility and makes tests more reliable. Use `getByText` when the visible text is the most appropriate way to identify an element.
