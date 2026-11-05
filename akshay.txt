@@ -1,0 +1,13 @@
+Playwright is a strong choice for End-to-End (E2E) testing because of its powerful features.
+
+1. **Cross-Browser Testing:** Playwright supports Chromium, Firefox, and WebKit. For example, we can test a login page across Chrome, Firefox, and Safari to ensure it works correctly in all browsers.
+
+2. **Auto-Waiting:** Playwright automatically waits for elements to become visible, enabled, and ready before performing actions. For example, when testing a login button, Playwright waits until the button is clickable before clicking it, reducing flaky tests.
+
+3. **Parallel Testing:** Playwright can run multiple tests simultaneously, saving execution time. For example, we can test registration, login, and course enrollment at the same time.
+
+**When I Would Choose Another Tool:**
+
+I would choose Appium instead of Playwright when testing native mobile applications because Appium supports direct interaction with Android and iOS device features, such as camera access, GPS, and notifications.
+
+Overall, Playwright is an excellent choice for reliable, fast, and scalable web application E2E testing.
