@@ -1,0 +1,17 @@
+In Playwright, `test`, `expect`, and `page` are important components used to write automated tests.
+
+1. **test:** It defines an individual test case. It contains the steps that need to be executed and verified.
+
+2. **expect:** It is used to check whether the actual result matches the expected result. For example, `expect(page).toHaveTitle('Dashboard')` checks whether the page title is Dashboard.
+
+3. **page:** It represents a browser tab or page. We use it to interact with the application, such as clicking buttons, entering text, and navigating between pages.
+
+The `page` fixture is passed into the test function because Playwright automatically provides a ready-to-use browser page. This makes it easy to interact with the application without creating a page manually.
+
+**Difference Between Web-First Assertion and Manual Check:**
+
+A web-first assertion like `await expect(page).toHaveTitle('Dashboard')` automatically retries the check until the expected title appears or the timeout is reached. This makes tests more reliable when pages take time to load.
+
+In contrast, `await page.title()` reads the title once. A plain comparison like `expect(await page.title()).toBe('Dashboard')` does not automatically retry the check. If the title is not updated yet, the test may fail immediately.
+
+Therefore, web-first assertions are preferred because they handle waiting automatically and reduce flaky tests.
