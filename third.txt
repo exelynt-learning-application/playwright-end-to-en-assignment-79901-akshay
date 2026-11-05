@@ -1,0 +1,16 @@
+The Playwright Test Runner (`npx playwright test`) is a complete testing framework that runs and manages automated tests. The Playwright library, on the other hand, provides browser automation APIs that can be used directly in a JavaScript or TypeScript script without using the test runner.
+
+**Two Features Provided by the Test Runner:**
+
+1. **Parallel Test Execution:** It allows multiple tests to run simultaneously, saving time. For example, login, registration, and course enrollment tests can run at the same time.
+2. **Automatic Reporting:** It provides test reports showing passed, failed, and skipped tests. For example, after running tests, we can view an HTML report to identify failures.
+
+**When a Plain Library Script Is Enough:**
+
+A plain Playwright library script is sufficient when we only need a simple browser automation task rather than a complete test suite.
+
+For example, if we want to open a website, log in, navigate to a page, and take a screenshot, we can use the Playwright library directly.
+
+**Conclusion:** The Test Runner is better for structured, repeatable E2E testing, while the Playwright library is suitable for simple browser automation and one-time tasks.
+
+Clarify the library-versus-runner terminologyAdd a concrete code example
