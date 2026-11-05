@@ -1,0 +1,13 @@
+**Reason for Intermittent Failure:**
+
+The test fails intermittently because `textContent()` reads the element's text only once. If the status has not updated to "Saved" yet, the assertion fails immediately instead of waiting for the page to update. This creates a timing issue.
+
+**Rewritten Code Using a Web-First Assertion:**
+
+```javascript
+await expect(page.locator('.status')).toHaveText('Saved');
+```
+
+**Explanation:**
+
+`toHaveText()` is a web-first assertion that automatically retries until the expected text appears or the timeout is reached. It waits for the status to become "Saved", making the test more reliable and reducing flaky failures.
