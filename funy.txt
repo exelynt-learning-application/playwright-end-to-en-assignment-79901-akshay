@@ -1,0 +1,7 @@
+1\. Enable Parallel Test Execution: Configure Playwright workers to run multiple tests simultaneously instead of executing them one by one. This can significantly reduce execution time. Trade-off: Parallel tests may require isolated test data and can increase CPU and memory usage.
+
+2\. Use Multiple CI Machines: Split the test suite into multiple shards and run them across different machines using `--shard`. This reduces the total pipeline time. Trade-off: More machines increase infrastructure costs and require proper test distribution.
+
+3\. Optimize Test Setup and Reuse Fixtures: Use reusable fixtures, API-based setup, and shared authentication state to avoid repeating expensive login and data-creation steps. Trade-off: Shared data can cause test conflicts, and maintaining fixtures requires additional setup.
+
+Conclusion: Combining parallel execution, CI sharding, and optimized test setup can reduce the 40-minute pipeline time while keeping the test suite reliable.
