@@ -1,0 +1,68 @@
+# Playwright Test Automation Framework – 5-Minute Walkthrough
+
+## 1. Introduction
+
+Hello everyone. Today I am going to explain my Playwright automation testing framework, including its folder structure, design decisions, CI execution process, and future improvements.
+
+My framework is designed to test important application features such as student login, course listing, course creation, and checkout.
+
+## 2. Framework Structure
+
+The project follows a modular folder structure:
+
+```text
+project/
+├── tests/
+│   ├── login.spec.js
+│   ├── course.spec.js
+│   └── checkout.spec.js
+├── pages/
+│   ├── LoginPage.js
+│   └── CourseCatalogPage.js
+├── fixtures/
+│   └── test-fixtures.js
+├── utils/
+│   └── courseHelper.js
+├── data/
+│   └── courses.json
+├── playwright.config.js
+└── package.json
+```
+
+The tests folder contains test cases. The pages folder contains reusable page objects and locators. Fixtures manage shared test setup, utils contains reusable helper functions, and data stores test information.
+
+## 3. One Design Decision I Would Change
+
+If I started this framework again, I would improve the separation between test cases, page objects, and helper functions.
+
+I would keep test cases focused on user actions and expected results, while moving reusable page interactions into page objects. This would make the framework easier to maintain and reduce code duplication.
+
+## 4. How I Run Tests in CI
+
+I use GitHub Actions to execute Playwright tests automatically whenever code is pushed or a pull request is created.
+
+The CI pipeline installs dependencies, installs Playwright browsers, runs the test suite, and uploads the test report as an artifact.
+
+Example commands:
+
+```bash
+npm ci
+npx playwright install --with-deps
+npx playwright test
+```
+
+This helps identify failures early and ensures that important application features continue working after code changes.
+
+## 5. Next Step to Improve Coverage
+
+My next improvement would be to increase test coverage for the admin course management module.
+
+I would add tests for creating, editing, deleting, and publishing courses, including free and paid course scenarios. I would also add accessibility checks and performance smoke tests to improve overall application quality.
+
+## 6. Conclusion
+
+Overall, my Playwright framework focuses on reusable components, readable test cases, reliable execution, and continuous integration.
+
+My goal is to make the automation framework scalable, maintainable, and reliable as the application grows.
+
+Thank you.
