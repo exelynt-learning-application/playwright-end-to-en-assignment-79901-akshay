@@ -1,0 +1,18 @@
+Coverage Gap: The test plan does not cover the admin course editor, leaving a critical administrative workflow untested.
+
+Why Is the Risk High?
+
+Although only two people use the admin course editor, it can publish paid courses that directly affect revenue and student access. A small error could publish incorrect course details, set the wrong price, expose unpublished content, or prevent students from purchasing courses. Therefore, risk should be measured by business impact, not just the number of users.
+
+Proposed Test Level: End-to-End (E2E) testing, supported by integration tests for course publishing and payment configuration.
+
+First Test Case – Publish a Paid Course:
+
+1. Log in as an admin.
+2. Open the course editor.
+3. Create or edit a course with a valid title, description, and price.
+4. Click Publish.
+5. Verify that the course status changes to Published.
+6. Open the student view and verify that the course is visible with the correct price and can be purchased.
+
+Expected Result: The admin should successfully publish the paid course, and students should see the correct course details and price.
