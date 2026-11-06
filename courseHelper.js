@@ -1,9 +1,11 @@
-export async function addCourse(page, { title, description, price }) {
+export async function addCourse(page, course) {
   await page.goto('/admin/courses');
+
   await page.getByRole('button', { name: 'Add Course' }).click();
-  await page.getByLabel('Title').fill(title);
-  await page.getByLabel('Description').fill(description);
-  await page.getByLabel('Price').fill(String(price));
+  await page.getByLabel('Title').fill(course.title);
+  await page.getByLabel('Description').fill(course.description);
+  await page.getByLabel('Price').fill(String(course.price));
+
   await page.getByRole('button', { name: 'Save' }).click();
 }
 import { test, expect } from '@playwright/test';
@@ -15,6 +17,7 @@ test('Admin can create a free course', async ({ page }) => {
     description: 'Learn JavaScript',
     price: 0
   });
+
   await expect(page.getByText('Free JavaScript')).toBeVisible();
 });
 
@@ -24,6 +27,7 @@ test('Admin can create a paid course', async ({ page }) => {
     description: 'Learn Python',
     price: 999
   });
+
   await expect(page.getByText('Advanced Python')).toBeVisible();
 });
 
@@ -33,6 +37,7 @@ test('Admin can create a beginner course', async ({ page }) => {
     description: 'Learn HTML',
     price: 199
   });
+
   await expect(page.getByText('HTML Basics')).toBeVisible();
 });
 
@@ -42,6 +47,7 @@ test('Admin can create an advanced course', async ({ page }) => {
     description: 'Learn React',
     price: 1499
   });
+
   await expect(page.getByText('React Advanced')).toBeVisible();
 });
 
@@ -51,5 +57,11 @@ test('Admin can create a database course', async ({ page }) => {
     description: 'Learn SQL',
     price: 499
   });
+
   await expect(page.getByText('SQL Fundamentals')).toBeVisible();
 });
+project/
+├── tests/
+│   └── course.spec.js
+└── utils/
+    └── courseHelper.js
