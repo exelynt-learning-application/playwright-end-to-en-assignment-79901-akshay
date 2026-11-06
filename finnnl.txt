@@ -1,0 +1,7 @@
+1\. Payment Widget Error State – Mock the Network: Mock the network response to simulate payment errors because it allows us to test error messages consistently without depending on the real payment service.
+
+2\. Login Form – Use the Real Backend: Use the real backend because we need to verify actual authentication, credentials, and communication with the authentication service.
+
+3\. Slow Course List – Use the Real Backend: Use the real backend to test actual API responses, data loading, and loading indicators under realistic conditions.
+
+Flakiness Risk: Using the real backend for login can cause intermittent test failures due to network issues, server downtime, or authentication service delays, even when the application code is working correctly.
