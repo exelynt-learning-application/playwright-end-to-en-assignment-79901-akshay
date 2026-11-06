@@ -1,0 +1,15 @@
+Visual regression test explanation
+
+Create the baseline once:
+npx playwright test course-list-header.spec.js --update-snapshots
+
+Run the test:
+npx playwright test course-list-header.spec.js
+
+To demonstrate a failure, change the course-list header text (for example, from 'Course List' to 'Available Courses') and run the test again. Playwright compares the current header screenshot with the saved baseline and reports a visual diff. The diff highlights changed pixels, while the expected and actual screenshots help identify the difference.
+
+Update the baseline only when the visual change is intentional, reviewed, and approved, such as a planned redesign. Commit the updated snapshot with the related code change.
+
+Fix the code instead when the difference is unexpected, such as a typo, broken CSS, incorrect spacing, or an unintended layout shift. Do not update the baseline merely to hide an unexplained regression.
+
+The test uses page.locator('header') as requested. If the application contains multiple header elements, narrow the locator to the course-list header (for example, with a data-testid) so the screenshot targets only the intended component.
