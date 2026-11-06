@@ -1,3 +1,11 @@
+/*
+The addCourse helper keeps repeated course-creation steps
+in one place, while descriptive test names and individual
+course details make each test's purpose clear.
+
+The helper would hide intent if it used hardcoded values,
+generic names, or included too many unrelated actions.
+*/
 export async function addCourse(page, course) {
   await page.goto('/admin/courses');
 
